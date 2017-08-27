@@ -13,3 +13,6 @@
 # limitations under the License.
 
 include vendor/statix/config/BoardConfigCustom.mk
+
+# Branding
+include vendor/statix/config/branding.mk
