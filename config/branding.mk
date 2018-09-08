@@ -12,13 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DATE := $(shell date -u +%Y%m%d)
-TIME := $(shell date -u +%H%M)
+DATE := $(shell date +%Y%m%d)
+TIME := $(shell date +%H%M)
 
 # Versioning
 # Use signing keys for only official.
 ifeq ($(STATIX_BUILD_TYPE),OFFICIAL)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
+endif
+
+ifndef STATIX_BUILD_TYPE
+    STATIX_BUILD_TYPE := UNOFFICIAL
 endif
 
 # Set all versions
@@ -29,7 +33,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     ro.statix.version=v2.0-$(BUILD_ID)-$(STATIX_BUILD_TYPE)-$(DATE)-$(TIME) \
     ro.mod.version=$(BUILD_ID)-$(DATE)-$(STATIX_BASE_VERSION)
-
-ifndef STATIX_BUILD_TYPE
-    STATIX_BUILD_TYPE := UNOFFICIAL
-endif
