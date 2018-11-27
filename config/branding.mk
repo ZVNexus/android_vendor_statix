@@ -18,7 +18,7 @@ TIME := $(shell date +%H%M)
 # Versioning
 # Use signing keys for only official.
 ifeq ($(STATIX_BUILD_TYPE),OFFICIAL)
-    PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := ./.keys/releasekey
 endif
 
 ifndef STATIX_BUILD_TYPE
