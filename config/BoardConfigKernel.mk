@@ -143,3 +143,13 @@ KERNEL_BUILD_OUT_PREFIX :=
 ifeq ($(OUT_DIR_PREFIX),out)
 KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
 endif
+
+# Set the full path to the gcc command
+GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/host
+ifeq ($(HOST_OS),darwin)
+KERNEL_HOST_TOOLCHAIN_ROOT := $(GCC_PREBUILTS)/i686-apple-darwin-4.2.1/bin/i686-apple-darwin11-
+else
+KERNEL_HOST_TOOLCHAIN_ROOT := $(GCC_PREBUILTS)/x86_64-linux-glibc2.17-4.8/bin/x86_64-linux-
+endif
+KERNEL_MAKE_FLAGS += HOSTCC=$(KERNEL_HOST_TOOLCHAIN_ROOT)gcc
+KERNEL_MAKE_FLAGS += HOSTCXX=$(KERNEL_HOST_TOOLCHAIN_ROOT)g++
