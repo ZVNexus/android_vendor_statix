@@ -129,3 +129,11 @@ endif
 
 # Set use the full path to the make command
 KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/make
+
+# Set the out dir for the kernel's O= argument.
+# This needs to be an absolute path, so only set this if the standard out directory isn't used.
+OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
+KERNEL_BUILD_OUT_PREFIX :=
+ifeq ($(OUT_DIR_PREFIX),out)
+KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
+endif
