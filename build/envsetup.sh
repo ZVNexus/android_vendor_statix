@@ -5,7 +5,6 @@ Additional functions:
 EOF
 }
 
-# Make using all available CPUs
 function mka() {
     case `uname -s` in
         Darwin)
