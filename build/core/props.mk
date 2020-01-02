@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/statix/config/BoardConfigCustom.mk
-
-# Branding
-include vendor/statix/config/branding.mk
-
-# Build ID
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_DISPLAY_ID="$(BUILD_ID)-$(TARGET_BUILD_VARIANT)"
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.statix.version=$(STATIX_BASE_VERSION)-$(STATIX_BUILD_TYPE)-$(BUILD_DATE)-$(BUILD_TIME) \
+    ro.mod.version=$(BUILD_ID)-$(BUILD_DATE)-$(STATIX_BASE_VERSION) \
+    ro.statix.fingerprint=$(ROM_FINGERPRINT)
