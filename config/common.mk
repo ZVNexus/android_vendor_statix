@@ -23,3 +23,7 @@ include vendor/statix/config/branding.mk
 # Build ID
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_DISPLAY_ID="$(BUILD_ID)-$(TARGET_BUILD_VARIANT)"
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += vendor/statix/overlay/common
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/statix/overlay
