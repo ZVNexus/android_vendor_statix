@@ -14,6 +14,9 @@
 
 include vendor/statix/config/BoardConfigCustom.mk
 
+# Boot Animation
+include vendor/statix/bootanimation/bootanimation.mk
+
 # Branding
 include vendor/statix/config/branding.mk
 
